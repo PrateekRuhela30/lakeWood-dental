@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Redesigned Lakewood Family Dental Care in Dallas, TX. Led by Dr. Reid Slaughter & Dr. Austin Farmer. Schedule premium cosmetic, preventive, and restorative dental care today.">
+    <meta name="keywords" content="dentist dallas, lakewood family dental care, cosmetic dentistry dallas, clear aligners, invisalign dallas, Dr. Reid Slaughter, Dr. Austin Farmer, local dental clinic">
+    <title>Lakewood Family Dental Care | Redesigned Premium Dental Care Dallas</title>
+    
+    <!-- Google Fonts: Outfit (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Link to Custom Stylesheet -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Local Business Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "DentalClinic",
+      "name": "Lakewood Family Dental Care",
+      "image": "https://www.lakewoodfamilydental.com/assets/images/logo.png",
+      "@id": "https://www.lakewoodfamilydental.com/#clinic",
+      "url": "https://www.lakewoodfamilydental.com",
+      "telephone": "(214) 823-1638",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "6329 Oram Street",
+        "addressLocality": "Dallas",
+        "addressRegion": "TX",
+        "postalCode": "75214",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 32.81395,
+        "longitude": -96.75471
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/lakewoodfamilydental",
+        "https://www.instagram.com/lakewoodfamilydental"
+      ],
+      "employee": [
+        {
+          "@type": "Dentist",
+          "name": "Dr. Reid Slaughter"
+        },
+        {
+          "@type": "Dentist",
+          "name": "Dr. Austin Farmer"
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+    <!-- STICKY HEADER -->
+    <header class="main-header" id="header">
+        <!-- TOP INFO BAR -->
+        <div class="header-top-bar">
+            <div class="container top-bar-container">
+                <div class="top-bar-left">
+                    <span class="top-info-item"><span class="icon">📍</span> 6221 Gaston Ave, Dallas, TX 75214</span>
+                    <span class="top-info-item"><span class="icon">🕒</span> Mon - Fri: 8AM - 5PM</span>
+                </div>
+                <div class="top-bar-right">
+                    <span class="follow-label">Follow Us:</span>
+                    <a href="https://www.facebook.com/lakewoodfamilydental" class="top-social-icon" target="_blank" rel="noopener" aria-label="Facebook">👤</a>
+                    <a href="https://www.instagram.com/lakewoodfamilydental" class="top-social-icon" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+                    <a href="https://www.google.com" class="top-social-icon" target="_blank" rel="noopener" aria-label="Google Search">🌐</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN NAVIGATION NAVBAR -->
+        <div class="navbar-main">
+            <div class="container header-container">
+                <!-- Hamburger Menu for Mobile (Positioned on the Left) -->
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navBar">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <!-- Brand Logo (Center on mobile, Left on desktop) -->
+                <a href="#" class="logo-area" aria-label="Lakewood Family Dental Care Home">
+                    <span class="logo-icon" aria-hidden="true">✨</span>
+                    <div class="logo-text">
+                        <span class="brand-name">LAKEWOOD</span>
+                        <span class="brand-tagline">FAMILY DENTAL CARE</span>
+                    </div>
+                </a>
+                
+                <!-- Navigation links list -->
+                <nav class="nav-bar" id="navBar" aria-label="Main Navigation">
+                    <a href="#about" class="nav-link">About Us <span class="chevron">▾</span></a>
+                    <a href="#services" class="nav-link">Services <span class="chevron">▾</span></a>
+                    <a href="#smile-gallery" class="nav-link">Smile Gallery</a>
+                    <a href="#team" class="nav-link">Our Doctors</a>
+                    <a href="#blog" class="nav-link">Blog</a>
+                    <a href="#faqs" class="nav-link">FAQs</a>
+                    <a href="#footer" class="nav-link">Contact</a>
+                </nav>
+
+                <!-- Action Button CTAs (Call & Appointment booking) -->
+                <div class="header-actions">
+                    <!-- Phone Pill (Secondary action) -->
+                    <a href="tel:2148231638" class="phone-pill-btn" aria-label="Call clinic at (214) 823-1638">
+                        <span class="phone-pill-icon" aria-hidden="true">📞</span>
+                        <div class="phone-pill-text">
+                            <span class="phone-num">(214) 823-1638</span>
+                            <span class="phone-label">Call Us Now</span>
+                        </div>
+                    </a>
+
+                    <!-- Prominent Booking Button (Primary action) -->
+                    <button class="btn-premium-book" id="openBookingBtn" onclick="openBookingModal()" aria-label="Open online appointment scheduler">
+                        <span class="book-pill-icon" aria-hidden="true">📅</span>
+                        <div class="book-btn-text">
+                            <span class="book-main-lbl">Book Appointment</span>
+                            <span class="book-sub-lbl">It's Free & Easy</span>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Mobile View Buttons (Phone and Orange Calendar) -->
+                <div class="mobile-actions-group">
+                    <a href="tel:2148231638" class="mob-action-icon phone-mob" aria-label="Call clinic directly">
+                        📞
+                    </a>
+                    <button class="mob-action-icon book-mob" onclick="openBookingModal()" aria-label="Book online instantly">
+                        📅
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <!-- HERO SECTION -->
+        <section class="hero-section" id="home">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="badge-row">
+                        <span class="badge-trust">⭐ 5.0 Rated Clinic on ZocDoc</span>
+                        <span class="badge-accent">CareCredit Approved</span>
+                    </div>
+                    <h1 class="hero-title">Crafting Exquisite Smiles with Unrivaled Care</h1>
+                    <p class="hero-subtitle">Experience elite cosmetic, general, and preventative dentistry in Dallas. Led by renowned doctors <strong>Dr. Reid Slaughter</strong> and <strong>Dr. Austin Farmer</strong>.</p>
+                    
+                    <div class="hero-cta-group">
+                        <button class="btn btn-primary btn-large" onclick="openBookingModal()" aria-label="Book a free consultation today">Book Your Free Smile Consult</button>
+                        <a href="#services" class="btn btn-tertiary">Explore Treatment Options</a>
+                    </div>
+
+                    <div class="hero-highlights">
+                        <div class="highlight-item">
+                            <span class="highlight-check" aria-hidden="true">✓</span>
+                            <span>Direct Insurance Billing</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-check" aria-hidden="true">✓</span>
+                            <span>Modern Comfort Amenities</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-check" aria-hidden="true">✓</span>
+                            <span>Emergency Care Available</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <!-- Floating Speed Badge -->
+                    <div class="glass-card hero-glass-badge" aria-label="Lightning Fast Performance Speed">
+                        <div class="badge-number">0.34s</div>
+                        <div class="badge-label">Lightning Fast Load Time</div>
+                    </div>
+                    
+                    <!-- Floating Appointment Availability Badge -->
+                    <div class="glass-card hero-glass-badge-2" aria-label="Appointment Availability Info">
+                        <span class="badge-icon-circle">📅</span>
+                        <div class="badge-2-text">
+                            <span class="badge-2-title">Next Available Spot</span>
+                            <span class="badge-2-sub">● Today at 2:00 PM</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Premium vector-art dental abstract visual inside styled container -->
+                    <div class="visual-decor">
+                        <div class="decor-circle circle-1"></div>
+                        <div class="decor-circle circle-2"></div>
+                        <svg class="abstract-smile-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Premium Smile Art Graphic">
+                            <path d="M100 220C120 280 280 280 300 220" stroke="url(#smile-grad)" stroke-width="12" stroke-linecap="round"/>
+                            <circle cx="120" cy="150" r="15" fill="#e5f6df"/>
+                            <circle cx="280" cy="150" r="15" fill="#e5f6df"/>
+                            <defs>
+                                <linearGradient id="smile-grad" x1="100" y1="220" x2="300" y2="220" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#fb8b24" />
+                                    <stop offset="1" stop-color="#0f4c5c" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRUST BADGES BAR -->
+        <section class="trust-bar" aria-label="Insurance Providers & Dental Associations">
+            <div class="container trust-container">
+                <span class="trust-title">ACCEPTED PROVIDERS & ASSOCIATIONS</span>
+                <div class="trust-logos">
+                    <div class="logo-wrapper">🛡️ Aetna PPO</div>
+                    <div class="logo-wrapper">💙 Blue Cross Blue Shield</div>
+                    <div class="logo-wrapper">💳 CareCredit Financing</div>
+                    <div class="logo-wrapper">⭐ ZocDoc Verified</div>
+                    <div class="logo-wrapper">🦷 American Dental Assoc.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY US & CORE HIGHLIGHTS -->
+        <section class="features-section" id="features">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Patient-First Philosophy, Modern Innovation</h2>
+                    <p class="section-subtitle">We design bespoke dental plans around your personal comfort, health, and cosmetic goals.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">🛡️</div>
+                        <h3 class="feature-heading">Pristine Safety & Technology</h3>
+                        <p class="feature-text">Equipped with ultra-low radiation digital X-rays and full hospital-grade sanitization setups for safe, accurate care.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">💎</div>
+                        <h3 class="feature-heading">Elite Cosmetic Sculpting</h3>
+                        <p class="feature-text">Custom veneers and invisible clear aligner treatments designed by certified digital smile aesthetic experts.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">🛋️</div>
+                        <h3 class="feature-heading">Sedation & Anxiety Comfort</h3>
+                        <p class="feature-text">Dental anxiety is real. We provide nitrous oxide options and heated neck pillows to ensure absolute peace of mind.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLINIC ABOUT & STORY SECTION (ADDITION) -->
+        <section class="about-section" id="about">
+            <div class="container about-container-grid">
+                <div class="about-visual">
+                    <div class="abstract-clinic-frame glass-card shadow-2xl">
+                        <div class="inside-artwork">
+                            <span class="art-icon">🏡</span>
+                            <div class="art-badge">Oram St. Clinic</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="badge-accent">OUR CLINICAL MISSION</span>
+                    <h2 class="section-title">Serving the Lakewood Community with Absolute Distinction</h2>
+                    <p class="about-paragraph">For nearly two decades, Lakewood Family Dental Care has set the standard for premium, compassionate dentistry in Dallas. Located in our comfort-equipped Oram Street facility, our practice was founded with a singular, resolute objective: to deliver a luxurious, stress-free clinical environment where your health and aesthetic goals are met with absolute precision.</p>
+                    <p class="about-paragraph">From simple preventative care to complex porcelain smile makeovers, our digital diagnostic scanners and patient-first philosophies guarantee that your appointments are quick, comfortable, and tailored to your individual bite alignment.</p>
+                    
+                    <div class="about-stats-row">
+                        <div class="about-stat">
+                            <span class="stat-number">18+</span>
+                            <span class="stat-label">Years of Care</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="stat-number">5k+</span>
+                            <span class="stat-label">Happy Patients</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Comfort Guarantee</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SMILE GALLERY (BEFORE/AFTER INTERACTIVE SLIDER) -->
+        <section class="smile-gallery-section" id="smile-gallery">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Aesthetic Transformations</h2>
+                    <p class="section-subtitle">Drag the interactive slider below to explore real therapeutic and cosmetic alignments.</p>
+                </div>
+
+                <div class="smile-slider-container">
+                    <div class="smile-slider-wrapper" id="smileSliderWrapper" tabindex="0" aria-label="Interactive before and after treatment smile slider. Use mouse or touch to slide.">
+                        <!-- Before Pane -->
+                        <div class="smile-pane before-pane">
+                            <div class="pane-content before-content">
+                                <div class="sketchy-teeth teeth-before">
+                                    <div class="clinical-tag tag-before">Before Treatment (Gaps & Discoloration)</div>
+                                    <!-- Dynamic CSS Visual Grid -->
+                                    <div class="dental-grid">
+                                        <div class="tooth gap shade-yellow"></div>
+                                        <div class="tooth gap shade-yellow crooked"></div>
+                                        <div class="tooth gap shade-yellow"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- After Pane -->
+                        <div class="smile-pane after-pane" id="afterPane">
+                            <div class="pane-content after-content">
+                                <div class="sketchy-teeth teeth-after">
+                                    <div class="clinical-tag tag-after">After Treatment (Lakewood Veneers)</div>
+                                    <!-- Dynamic CSS Visual Grid -->
+                                    <div class="dental-grid">
+                                        <div class="tooth aligned shade-white glow"></div>
+                                        <div class="tooth aligned shade-white glow"></div>
+                                        <div class="tooth aligned shade-white glow"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sliding Handle -->
+                        <div class="slider-handle" id="sliderHandle">
+                            <div class="handle-line"></div>
+                            <div class="handle-button" aria-hidden="true">↔</div>
+                            <div class="handle-line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- TREATMENT SERVICES -->
+        <section class="services-section" id="services">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Bespoke Treatments & Services</h2>
+                    <p class="section-subtitle">Premium preventative solutions and high-ticket smile sculpting all under one comfortable roof.</p>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Service 1 -->
+                    <div class="service-card shadow" onclick="openServiceModal('preventive')" tabindex="0" role="button" aria-label="View Preventive and Cleaning services details">
+                        <div class="service-meta">
+                            <span class="service-icon" aria-hidden="true">🧹</span>
+                            <span class="service-badge">Crucial</span>
+                        </div>
+                        <h3 class="service-name">Preventative & Cleaning</h3>
+                        <p class="service-brief">Biannual comprehensive examinations, ultrasonic scale cleanings, digital decay mapping, and fluoride protective coatings.</p>
+                        <span class="service-link">View Treatment Schedule ➔</span>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="service-card shadow" onclick="openServiceModal('restorative')" tabindex="0" role="button" aria-label="View Restorative Dental Works details">
+                        <div class="service-meta">
+                            <span class="service-icon" aria-hidden="true">🦷</span>
+                            <span class="service-badge">High Demand</span>
+                        </div>
+                        <h3 class="service-name">Restorative Dental Works</h3>
+                        <p class="service-brief">State-of-the-art tooth colored resin fillings, durable root canals, custom porcelain caps, and composite bridgework restorations.</p>
+                        <span class="service-link">View Treatment Schedule ➔</span>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="service-card shadow" onclick="openServiceModal('cosmetic')" tabindex="0" role="button" aria-label="View Cosmetic Veneers details">
+                        <div class="service-meta">
+                            <span class="service-icon" aria-hidden="true">✨</span>
+                            <span class="service-badge">Premium</span>
+                        </div>
+                        <h3 class="service-name">Cosmetic Veneers</h3>
+                        <p class="service-brief">Individually tailored porcelain or composite smile shells designed to restructure length, symmetry, and color shades permanently.</p>
+                        <span class="service-link">View Treatment Schedule ➔</span>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="service-card shadow" onclick="openServiceModal('aligners')" tabindex="0" role="button" aria-label="View Invisalign Clear Aligners details">
+                        <div class="service-meta">
+                            <span class="service-icon" aria-hidden="true">🌀</span>
+                            <span class="service-badge">Elite</span>
+                        </div>
+                        <h3 class="service-name">Invisalign® Clear Aligners</h3>
+                        <p class="service-brief">Align tooth patterns invisibly with modular dental clear sheets. Ideal alignment method for teens and professional adults.</p>
+                        <span class="service-link">View Treatment Schedule ➔</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOCTORS BIOGRAPHY/TEAM -->
+        <section class="team-section" id="team">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Meet Your Lakewood Dental Experts</h2>
+                    <p class="section-subtitle">Dedicated professionals putting clinical precision and patient comfort at the forefront.</p>
+                </div>
+
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="doc-avatar-container">
+                            <div class="doc-avatar shadow-inner" aria-hidden="true">👨‍⚕️</div>
+                        </div>
+                        <h3 class="doc-name">Dr. Reid Slaughter</h3>
+                        <span class="doc-title">DDS — Lead Aesthetic & General Dentist</span>
+                        <p class="doc-text">With over 18 years of clinical and restorative experience, Dr. Slaughter specializes in dental implant restoration, cosmetic porcelain crowns, and general family dentistry.</p>
+                        <div class="doc-badges">
+                            <span class="doc-badge">ADA Member</span>
+                            <span class="doc-badge">ZocDoc 5★ Rating</span>
+                        </div>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="doc-avatar-container">
+                            <div class="doc-avatar shadow-inner" aria-hidden="true">👨‍⚕️</div>
+                        </div>
+                        <h3 class="doc-name">Dr. Austin Farmer</h3>
+                        <span class="doc-title">DDS — Orthodontic & Invisalign® Associate</span>
+                        <p class="doc-text">Dr. Farmer holds extensive certifications in advanced occlusion and clear aligner therapies, helping align functional, stunning smiles for patients of all ages.</p>
+                        <div class="doc-badges">
+                            <span class="doc-badge">Invisalign® Certified</span>
+                            <span class="doc-badge">TDA Associate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS & TRUST GRID -->
+        <section class="testimonials-section" id="testimonials">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Loved by the Dallas Community</h2>
+                    <p class="section-subtitle">Read real patient experiences from Zocdoc and Google Local reviews.</p>
+                </div>
+
+                <div class="testimonials-grid">
+                    <div class="review-box shadow-md">
+                        <div class="stars" aria-label="5 out of 5 stars">⭐⭐⭐⭐|</div>
+                        <p class="review-text">"Dr. Slaughter is the most gentle dentist I have ever met. I had a crown and filling done and felt absolutely zero pain. The team really respects your comfort and time."</p>
+                        <div class="reviewer-meta">
+                            <span class="reviewer-name">Sarah M.</span>
+                            <span class="reviewer-status">✓ Verified Patient</span>
+                        </div>
+                    </div>
+
+                    <div class="review-box shadow-md">
+                        <div class="stars" aria-label="5 out of 5 stars">⭐⭐⭐⭐|</div>
+                        <p class="review-text">"Outstanding Invisalign® work by Dr. Farmer. The appointment flow is always extremely fast and the modern office on Oram Street is exceptionally clean and comfortable!"</p>
+                        <div class="reviewer-meta">
+                            <span class="reviewer-name">James K.</span>
+                            <span class="reviewer-status">✓ Google Local Guide</span>
+                        </div>
+                    </div>
+
+                    <div class="review-box shadow-md">
+                        <div class="stars" aria-label="5 out of 5 stars">⭐⭐⭐⭐|</div>
+                        <p class="review-text">"Super easy scheduling and they worked directly with my Aetna PPO insurance to cover the full preventative cleaning. Highly recommend Lakewood Family Dental Care!"</p>
+                        <div class="reviewer-meta">
+                            <span class="reviewer-name">David R.</span>
+                            <span class="reviewer-status">✓ ZocDoc Reviewer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INSTAGRAM FEED INTEGRATION (ADDITION) -->
+        <section class="instagram-feed-section" id="instagram-feed">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="badge-accent">@LAKEWOODDENTAL</span>
+                    <h2 class="section-title">Follow Our Smile Journey</h2>
+                    <p class="section-subtitle">Peek inside our boutique clinic and explore our live transformations feed.</p>
+                </div>
+
+                <div class="instagram-grid">
+                    <div class="instagram-card shadow-md" onclick="alert('Proceeding to @lakewoodfamilydental on Instagram!')">
+                        <div class="insta-gradient-placeholder">📸</div>
+                        <div class="insta-hover-overlay">
+                            <span>❤️ 142 Likes</span>
+                            <span>💬 8 Comments</span>
+                        </div>
+                    </div>
+                    <div class="instagram-card shadow-md" onclick="alert('Proceeding to @lakewoodfamilydental on Instagram!')">
+                        <div class="insta-gradient-placeholder">✨</div>
+                        <div class="insta-hover-overlay">
+                            <span>❤️ 98 Likes</span>
+                            <span>💬 4 Comments</span>
+                        </div>
+                    </div>
+                    <div class="instagram-card shadow-md" onclick="alert('Proceeding to @lakewoodfamilydental on Instagram!')">
+                        <div class="insta-gradient-placeholder">🏠</div>
+                        <div class="insta-hover-overlay">
+                            <span>❤️ 210 Likes</span>
+                            <span>💬 12 Comments</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOCAL SEO ARTICLES / SMILE BLOG SECTION (ADDITION) -->
+        <section class="blog-section" id="blog">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="badge-secondary">DENTAL HEALTH EDUCATION</span>
+                    <h2 class="section-title">Latest Articles & Smile Insights</h2>
+                    <p class="section-subtitle">Bespoke articles optimized by our Dallas SEO specialists to support your oral health goals.</p>
+                </div>
+
+                <div class="blog-grid">
+                    <!-- Blog post 1 -->
+                    <article class="blog-card shadow-md">
+                        <div class="blog-art-gradient bg-teal"></div>
+                        <div class="blog-card-body">
+                            <span class="blog-card-meta">May 15, 2026 • Invisalign Tips</span>
+                            <h3 class="blog-card-heading"><a href="#" onclick="alert('Full Invisalign local article coming soon!')">How to Choose the Best Invisalign® Provider in Dallas, TX</a></h3>
+                            <p class="blog-card-text">Discover key clinical factors to evaluate when scheduling clear aligner therapy in Dallas, from diagnostic comfort scanners to orthodontist credentials.</p>
+                            <a href="#" onclick="alert('Full Invisalign local article coming soon!')" class="blog-read-link">Read Full Guide ➔</a>
+                        </div>
+                    </article>
+
+                    <!-- Blog post 2 -->
+                    <article class="blog-card shadow-md">
+                        <div class="blog-art-gradient bg-gold"></div>
+                        <div class="blog-card-body">
+                            <span class="blog-card-meta">April 28, 2026 • Cosmetic Makeover</span>
+                            <h3 class="blog-card-heading"><a href="#" onclick="alert('Full Veneers local article coming soon!')">Porcelain Veneers: Is the Cosmetic Makeover Worth the Investment?</a></h3>
+                            <p class="blog-card-text">Unveiling the exact dental sculpting procedures, custom materials, and clinical comfort protocols involved in permanent tooth restoration.</p>
+                            <a href="#" onclick="alert('Full Veneers local article coming soon!')" class="blog-read-link">Read Full Guide ➔</a>
+                        </div>
+                    </article>
+
+                    <!-- Blog post 3 -->
+                    <article class="blog-card shadow-md">
+                        <div class="blog-art-gradient bg-mint"></div>
+                        <div class="blog-card-body">
+                            <span class="blog-card-meta">March 10, 2026 • Family Hygiene</span>
+                            <h3 class="blog-card-heading"><a href="#" onclick="alert('Full preventative hygiene guide coming soon!')">The Guide to Pain-Free Preventative Teeth Cleaning</a></h3>
+                            <p class="blog-card-text">Learn how modern ultrasonic scale cleanings and heated clinical neck cushions prevent tooth decay while eliminating dental chair anxiety completely.</p>
+                            <a href="#" onclick="alert('Full preventative hygiene guide coming soon!')" class="blog-read-link">Read Full Guide ➔</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ ACCORDION SECTION -->
+        <section class="faq-section" id="faqs">
+            <div class="container faq-container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <p class="section-subtitle">Everything you need to know about our billing, technology, and treatments.</p>
+                </div>
+
+                <div class="faq-accordion">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>Do you accept my dental PPO insurance plan?</span>
+                            <span class="faq-arrow" aria-hidden="true">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! We accept a wide range of dental PPO insurance providers, including Aetna, Delta Dental, MetLife, Blue Cross Blue Shield, and Cigna. Our clinical front desk staff will handle all claims processing directly to ensure you maximize your benefits.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>What financing options do you provide?</span>
+                            <span class="faq-arrow" aria-hidden="true">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We are fully certified partners with CareCredit, which offers flexible, interest-free monthly financing plans for clinical treatments. We also provide customized in-house payment options to accommodate cosmetic veneers and aligners.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>How long do Invisalign® treatments take?</span>
+                            <span class="faq-arrow" aria-hidden="true">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>On average, orthodontic Invisalign® corrections take between 6 to 18 months, depending on your individual bite configuration. We supply digital smile renderings during your consult so you can view your expected results beforehand!</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">
+                            <span>What is your emergency dental care procedure?</span>
+                            <span class="faq-arrow" aria-hidden="true">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We hold designated daily emergency blocks for patients suffering from severe tooth pain, chips, or unexpected fractures. Call our Oram Street office at (214) 823-1638 directly for immediate same-day priority appointments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER WITH GOOGLE MAP EMBED PLACEHOLDER -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo-area">
+                    <span class="logo-icon" aria-hidden="true">✨</span>
+                    <div class="logo-text">
+                        <span class="brand-name text-white">LAKEWOOD</span>
+                        <span class="brand-tagline">FAMILY DENTAL CARE</span>
+                    </div>
+                </a>
+                <p class="brand-brief">Providing elegant, world-class cosmetic & family dentistry to Lakewood, University Park, and the wider Dallas area.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/lakewoodfamilydental" aria-label="Facebook Page" target="_blank" rel="noopener">👤 Facebook</a>
+                    <a href="https://www.instagram.com/lakewoodfamilydental" aria-label="Instagram Profile" target="_blank" rel="noopener">📸 Instagram</a>
+                </div>
+            </div>
+
+            <div class="footer-contacts">
+                <h4 class="footer-title">Contact & Location</h4>
+                <p>📍 <strong>Address:</strong> 6329 Oram Street, Dallas, TX 75214</p>
+                <p>📞 <strong>Phone:</strong> <a href="tel:2148231638" class="footer-tel" aria-label="Call clinic directly">(214) 823-1638</a></p>
+                <p>🕒 <strong>Hours:</strong> Mon - Fri: 9:00 AM - 5:00 PM</p>
+                
+                <!-- Stylized vector-based map visual showing Oram Street location for SEO -->
+                <div class="local-map-visual shadow-inner" aria-label="Boutique Lakewood Clinic Google Maps location illustration">
+                    <div class="map-marker" aria-hidden="true">📍</div>
+                    <div class="map-text">Oram St & Richmond Ave intersection, Dallas</div>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4 class="footer-title">Quick Navigation</h4>
+                <ul>
+                    <li><a href="#features">Why Us</a></li>
+                    <li><a href="#about">About Clinic</a></li>
+                    <li><a href="#services">Treatments</a></li>
+                    <li><a href="#smile-gallery">Smile Slider</a></li>
+                    <li><a href="#blog">Smile Blog</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Lakewood Family Dental Care. Redesigned Premium Site Model. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- STICKY BOTTOM CALL-TO-ACTION FOR MOBILE -->
+    <div class="sticky-mobile-cta">
+        <a href="tel:2148231638" class="btn btn-secondary mobile-cta-btn" aria-label="Call clinic phone directly">📞 Call Clinic</a>
+        <button class="btn btn-primary mobile-cta-btn" onclick="openBookingModal()" aria-label="Book online instantly">📅 Book Online</button>
+    </div>
+
+    <!-- DYNAMIC MULTI-STEP APPOINTMENT BOOKING MODAL -->
+    <div class="modal-overlay" id="bookingModalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+        <div class="modal-card booking-modal-card shadow-2xl">
+            <button class="close-modal-btn" onclick="closeBookingModal()" aria-label="Close booking modal and return to home page">✕</button>
+            
+            <div class="booking-modal-header">
+                <h3 id="modalTitle">Schedule Your Smile Consultation</h3>
+                <p>Complete 4 simple steps to lock in your clinical block.</p>
+                
+                <!-- Progress Indicator -->
+                <div class="booking-progress-bar">
+                    <div class="progress-fill" id="bookingProgressFill" style="width: 25%;"></div>
+                    <div class="progress-step active" id="progStep1" aria-label="Step 1: Choose Service">1</div>
+                    <div class="progress-step" id="progStep2" aria-label="Step 2: Choose Dentist">2</div>
+                    <div class="progress-step" id="progStep3" aria-label="Step 3: Choose Date and Time">3</div>
+                    <div class="progress-step" id="progStep4" aria-label="Step 4: Confirm Patient Details">4</div>
+                </div>
+            </div>
+
+            <div class="booking-modal-body">
+                <!-- STEP 1: Select Service -->
+                <div class="booking-step-pane pane-active" id="bookPane1">
+                    <h4 class="step-pane-title">Select Treatment Category</h4>
+                    <div class="booking-options-grid options-grid-6">
+                        <!-- Card 1: Preventive Dentistry -->
+                        <div class="booking-opt-card" onclick="selectBookingOption('service', 'Preventive Dentistry', this)" tabindex="0" role="button" aria-label="Select Preventive Dentistry category">
+                            <div class="opt-icon-circle bg-mint">🧹</div>
+                            <span class="opt-name">Preventive Dentistry</span>
+                            <p class="opt-card-desc">Routine cleanings, exams, and preventive care for long-term oral health.</p>
+                        </div>
+                        <!-- Card 2: Cosmetic Dentistry -->
+                        <div class="booking-opt-card" onclick="selectBookingOption('service', 'Cosmetic Dentistry', this)" tabindex="0" role="button" aria-label="Select Cosmetic Dentistry category">
+                            <div class="opt-icon-circle bg-gold">✨</div>
+                            <span class="opt-name">Cosmetic Dentistry</span>
+                            <p class="opt-card-desc">Enhance your smile with veneers, whitening, and smile makeovers.</p>
+                        </div>
+                        <!-- Card 3: Restorative Dentistry -->
+                        <div class="booking-opt-card" onclick="selectBookingOption('service', 'Restorative Dentistry', this)" tabindex="0" role="button" aria-label="Select Restorative Dentistry category">
+                            <div class="opt-icon-circle bg-blue">🦷</div>
+                            <span class="opt-name">Restorative Dentistry</span>
+                            <p class="opt-card-desc">Restore damaged teeth with crowns, fillings, and advanced treatments.</p>
+                        </div>
+                        <!-- Card 4: Invisalign Treatment -->
+                        <div class="booking-opt-card" onclick="selectBookingOption('service', 'Invisalign Treatment', this)" tabindex="0" role="button" aria-label="Select Invisalign Treatment category">
+                            <div class="opt-icon-circle bg-purple">🌀</div>
+                            <span class="opt-name">Invisalign Treatment</span>
+                            <p class="opt-card-desc">Straighten your teeth discreetly with modern clear aligners.</p>
+                        </div>
+                        <!-- Card 5: Dental Implants -->
+                        <div class="booking-opt-card" onclick="selectBookingOption('service', 'Dental Implants', this)" tabindex="0" role="button" aria-label="Select Dental Implants category">
+                            <div class="opt-icon-circle bg-teal">🔩</div>
+                            <span class="opt-name">Dental Implants</span>
+                            <p class="opt-card-desc">Permanent tooth replacement solutions with natural aesthetics.</p>
+                        </div>
+                        <!-- Card 6: Emergency Dental Care -->
+                        <div class="booking-opt-card" onclick="selectBookingOption('service', 'Emergency Dental Care', this)" tabindex="0" role="button" aria-label="Select Emergency Dental Care category">
+                            <div class="opt-icon-circle bg-red">🚨</div>
+                            <span class="opt-name">Emergency Dental Care</span>
+                            <p class="opt-card-desc">Immediate treatment for pain, broken teeth, and urgent dental issues.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Select Dentist -->
+                <div class="booking-step-pane" id="bookPane2">
+                    <h4 class="step-pane-title">Choose Dental Specialist</h4>
+                    <div class="booking-options-grid">
+                        <div class="booking-opt-card" onclick="selectBookingOption('doctor', 'Dr. Reid Slaughter', this)" tabindex="0" role="button" aria-label="Select Dr. Reid Slaughter as your dental expert">
+                            <span class="opt-avatar" aria-hidden="true">👨‍⚕️</span>
+                            <span class="opt-name">Dr. Reid Slaughter</span>
+                            <span class="opt-desc">General & Implant Expert</span>
+                        </div>
+                        <div class="booking-opt-card" onclick="selectBookingOption('doctor', 'Dr. Austin Farmer', this)" tabindex="0" role="button" aria-label="Select Dr. Austin Farmer as your orthodontics expert">
+                            <span class="opt-avatar" aria-hidden="true">👨‍⚕️</span>
+                            <span class="opt-name">Dr. Austin Farmer</span>
+                            <span class="opt-desc">Invisalign® & Orthodontics</span>
+                        </div>
+                        <div class="booking-opt-card" onclick="selectBookingOption('doctor', 'First Available Dentist', this)" tabindex="0" role="button" aria-label="Select first available dentist to lock in the earliest appointment slot">
+                            <span class="opt-avatar" aria-hidden="true">⚡</span>
+                            <span class="opt-name">First Available</span>
+                            <span class="opt-desc">Locks in earliest opening</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Select Date & Time -->
+                <div class="booking-step-pane" id="bookPane3">
+                    <h4 class="step-pane-title">Choose Date & Priority Time Slot</h4>
+                    <div class="calendar-inputs">
+                        <div class="form-group">
+                            <label for="bookingDate">Select Date:</label>
+                            <input type="date" id="bookingDate" class="form-control" onchange="generateTimeSlots()" required>
+                        </div>
+                        
+                        <div class="time-slots-wrapper">
+                            <label>Available Slots:</label>
+                            <div class="time-slots-grid" id="timeSlotsGrid">
+                                <span class="no-date-msg">Please pick a date first to display slots.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4: Personal Info & Submit -->
+                <div class="booking-step-pane" id="bookPane4">
+                    <h4 class="step-pane-title">Confirm Patient Information</h4>
+                    <form id="bookingFinalForm" onsubmit="submitBooking(event)">
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="patientName">Full Name:</label>
+                                <input type="text" id="patientName" class="form-control" placeholder="Sarah Mitchell" required>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="countrySelect">Country:</label>
+                                <select id="countrySelect" class="form-control" style="margin-bottom: 6px;">
+                                    <option value="+1">United States (+1)</option>
+                                    <option value="+91">India (+91)</option>
+                                    <option value="+44">United Kingdom (+44)</option>
+                                    <option value="+61">Australia (+61)</option>
+                                    <option value="+81">Japan (+81)</option>
+                                    <!-- Add more countries as needed -->
+                                </select>
+                                <label for="patientPhone">Phone Number:</label>
+                                <input type="tel" id="patientPhone" class="form-control" placeholder="e.g. 9897901334" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="patientEmail">Email Address:</label>
+                            <input type="email" id="patientEmail" class="form-control" placeholder="sarah@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="patientInsurance">Will you be utilizing PPO Insurance?</label>
+                            <select id="patientInsurance" class="form-control" aria-label="Select whether you utilizing PPO insurance plan">
+                                <option value="Yes">Yes, utilizing PPO insurance</option>
+                                <option value="No">No, self-pay / CareCredit</option>
+                            </select>
+                        </div>
+                        
+                        <div class="booking-summary-box">
+                            <h5>Selected Schedule:</h5>
+                            <p>🩺 <strong id="summaryService">Not selected</strong> with <strong id="summaryDoc">Not selected</strong></p>
+                            <p>📅 <strong id="summaryDateTime">Not selected</strong></p>
+                        </div>
+
+                        <!-- Spam Protection & Encryption Indicator -->
+                        <div class="secure-badge-box">
+                            <span>🔒 256-bit Encrypted SSL Form</span>
+                            <span>• spam protection active</span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-full btn-large">Finalize Free Booking Request</button>
+                    </form>
+                </div>
+
+                <!-- STEP 5: Success screen -->
+                <div class="booking-step-pane text-center" id="bookPaneSuccess">
+                    <div class="success-icon-anim" aria-hidden="true">🎉</div>
+                    <h4 class="success-heading">Consultation Scheduled!</h4>
+                    <p class="success-msg">Your priority clinical slot is successfully locked. We sent a booking receipt to <strong id="sentEmail">your email</strong>. A front desk coordinator will text you in under 15 minutes to confirm insurance claims.</p>
+                    <button class="btn btn-primary" onclick="closeBookingModal()">Done</button>
+                </div>
+            </div>
+
+            <div class="booking-modal-footer">
+                <button class="btn btn-tertiary" id="prevStepBtn" onclick="navigateBookingStep(-1)" style="display: none;">Back</button>
+                <button class="btn btn-secondary" id="nextStepBtn" onclick="navigateBookingStep(1)">Next Step</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE SERVICE DETAIL MODALS -->
+    <div class="modal-overlay" id="serviceModalOverlay" role="dialog" aria-modal="true" aria-labelledby="serviceTitle" tabindex="-1">
+        <div class="modal-card service-modal-card shadow-2xl">
+            <button class="close-modal-btn" onclick="closeServiceModal()" aria-label="Close treatment details window">✕</button>
+            <div id="serviceModalContent">
+                <!-- Content injected dynamically via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING WHATSAPP BUTTON (ADDITION) -->
+    <a href="https://wa.me/12148231638" class="whatsapp-floating-bubble shadow-xl" target="_blank" rel="noopener" aria-label="Chat with Lakewood Dental on WhatsApp">
+        <span class="whatsapp-icon-placeholder">💬</span>
+        <span class="whatsapp-label">WhatsApp Us</span>
+    </a>
+
+    <!-- AI DENTAL ASSISTANT FLOATING CHATBOT -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <!-- Chat Bubble Trigger -->
+        <button class="chatbot-bubble shadow-xl" id="chatbotBubble" onclick="toggleChatbot()" aria-label="Open AI Dental Chatbot Assistant">
+            <span class="chat-bubble-icon" aria-hidden="true">💬</span>
+            <span class="chat-bubble-pulse" aria-hidden="true"></span>
+        </button>
+
+        <!-- Chat Panel -->
+        <div class="chatbot-panel shadow-2xl" id="chatbotPanel" role="dialog" aria-label="AI Dental Chatbot Panel">
+            <div class="chat-header">
+                <div class="chat-avatar" aria-hidden="true">🤖</div>
+                <div class="chat-meta">
+                    <h4>Lakewood Assistant</h4>
+                    <span class="chat-status">🟢 Online | Dynamic AI FAQ</span>
+                </div>
+                <button class="chat-close-btn" onclick="toggleChatbot()" aria-label="Close assistant chatbot window">✕</button>
+            </div>
+
+            <div class="chat-body" id="chatBody">
+                <div class="chat-msg msg-assistant">
+                    Hello! I'm your Lakewood Family Assistant. How can I help you take care of your smile today?
+                </div>
+                <div class="chat-msg msg-assistant">
+                    You can ask me about:
+                    <ul class="chat-intro-list">
+                        <li>🦷 Acceptable PPO Insurances</li>
+                        <li>💳 CareCredit & Payment plans</li>
+                        <li>📅 Opening Hours & Location</li>
+                        <li>🌀 Invisalign & Veneers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="chat-quick-suggest">
+                <button class="suggest-btn" onclick="sendQuickMessage('Do you accept Aetna?')">Accept Insurance?</button>
+                <button class="suggest-btn" onclick="sendQuickMessage('How do I book veneers?')">Book Veneers?</button>
+                <button class="suggest-btn" onclick="sendQuickMessage('Are you open on Saturdays?')">Saturday hours?</button>
+            </div>
+
+            <form class="chat-footer" onsubmit="handleChatSubmit(event)">
+                <input type="text" id="chatInput" class="chat-input-field" placeholder="Ask about aligners, billing, hours..." required autocomplete="off" aria-label="Type message to dental assistant">
+                <button type="submit" class="chat-send-btn" aria-label="Send message to assistant">➔</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script imports -->
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.pyc
+
+# Local databases and logs
+*.db
+*.sqlite3
+uvicorn_logs.txt
+
+# Environment variables
+.env
+
+# MacOS
+.DS_Store

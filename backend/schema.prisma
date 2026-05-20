@@ -1,0 +1,255 @@
+// ============================================================================
+// LAKEWOOD FAMILY DENTAL CARE
+// PRISMA schema configuration (SQLite compatible for easy local running)
+// ============================================================================
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 1. TREATMENT CATEGORIES
+model TreatmentCategory {
+  id             String         @id @default(uuid())
+  title          String         @unique
+  slug           String         @unique
+  description    String
+  icon           String
+  imageUrl       String?        @map("image_url")
+  seoTitle       String?        @map("seo_title")
+  seoDescription String?        @map("seo_description")
+  seoKeywords    String?        @map("seo_keywords")
+  isFeatured     Boolean        @default(false) @map("is_featured")
+  createdAt      DateTime       @default(now()) @map("created_at")
+  updatedAt      DateTime       @default(now()) @updatedAt @map("updated_at")
+  deletedAt      DateTime?      @map("deleted_at")
+  
+  appointments   Appointment[]
+  testimonials   Testimonial[]
+  blogPosts      BlogPost[]
+
+  @@map("treatment_categories")
+}
+
+// 2. DOCTORS
+model Doctor {
+  id             String           @id @default(uuid())
+  firstName      String           @map("first_name")
+  lastName       String           @map("last_name")
+  slug           String           @unique
+  specialization String
+  experienceYears Int             @map("experience_years")
+  bio            String
+  profileImageUrl String?         @map("profile_image_url")
+  certifications String           @default("") // SQLite does not support String[]
+  socialLinkedin String?          @map("social_linkedin")
+  socialTwitter  String?          @map("social_twitter")
+  isActive       Boolean          @default(true) @map("is_active")
+  createdAt      DateTime         @default(now()) @map("created_at")
+  updatedAt      DateTime         @default(now()) @updatedAt @map("updated_at")
+  deletedAt      DateTime?        @map("deleted_at")
+
+  appointments   Appointment[]
+  schedules      DoctorSchedule[]
+
+  @@map("doctors")
+}
+
+// 3. DOCTOR WEEKLY SCHEDULE TEMPLATE
+model DoctorSchedule {
+  id          String   @id @default(uuid())
+  doctorId    String   @map("doctor_id")
+  dayOfWeek   Int      @map("day_of_week")
+  startTime   DateTime @map("start_time")
+  endTime     DateTime @map("end_time")
+  isAvailable Boolean  @default(true) @map("is_available")
+  
+  doctor      Doctor   @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+
+  @@unique([doctorId, dayOfWeek, startTime, endTime])
+  @@map("doctor_schedules")
+}
+
+// 4. APPOINTMENTS
+model Appointment {
+  id                  String            @id @default(uuid())
+  patientName         String            @map("patient_name")
+  patientEmail        String            @map("patient_email")
+  patientPhone        String            @map("patient_phone")
+  treatmentCategoryId String?           @map("treatment_category_id")
+  doctorId            String            @map("doctor_id")
+  appointmentDate     DateTime          @map("appointment_date")
+  appointmentTime     DateTime          @map("appointment_time")
+  status              String            @default("PENDING")
+  isPpoInsurance      Boolean           @default(false) @map("is_ppo_insurance")
+  notes               String?
+  createdAt           DateTime          @default(now()) @map("created_at")
+  updatedAt           DateTime          @default(now()) @updatedAt @map("updated_at")
+  deletedAt           DateTime?         @map("deleted_at")
+
+  treatmentCategory   TreatmentCategory? @relation(fields: [treatmentCategoryId], references: [id], onDelete: SetNull)
+  doctor              Doctor            @relation(fields: [doctorId], references: [id], onDelete: Restrict)
+
+  @@unique([doctorId, appointmentDate, appointmentTime], name: "unique_doctor_slot")
+  @@map("appointments")
+}
+
+// 5. CONTACT LEADS
+model ContactLead {
+  id          String        @id @default(uuid())
+  name        String
+  email       String
+  phone       String?
+  message     String
+  inquiryType String        @map("inquiry_type")
+  leadSource  String?       @default("Direct Website Search") @map("lead_source")
+  status      String        @default("NEW")
+  notes       String?
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @default(now()) @updatedAt @map("updated_at")
+  deletedAt   DateTime?     @map("deleted_at")
+
+  @@map("contact_leads")
+}
+
+// 6. TESTIMONIALS
+model Testimonial {
+  id                  String             @id @default(uuid())
+  patientName         String             @map("patient_name")
+  reviewText          String             @map("review_text")
+  rating              Int
+  avatarUrl           String?            @map("avatar_url")
+  treatmentCategoryId String?            @map("treatment_category_id")
+  isFeatured          Boolean            @default(false) @map("is_featured")
+  isVerifiedGoogle    Boolean            @default(true) @map("is_verified_google")
+  createdAt           DateTime           @default(now()) @map("created_at")
+  updatedAt           DateTime           @default(now()) @updatedAt @map("updated_at")
+  deletedAt           DateTime?          @map("deleted_at")
+
+  treatmentCategory   TreatmentCategory? @relation(fields: [treatmentCategoryId], references: [id], onDelete: SetNull)
+
+  @@map("testimonials")
+}
+
+// 7. BLOG CATEGORIES
+model BlogCategory {
+  id        String     @id @default(uuid())
+  name      String     @unique
+  slug      String     @unique
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @default(now()) @updatedAt @map("updated_at")
+  posts     BlogPost[]
+
+  @@map("blog_categories")
+}
+
+// 8. BLOG TAGS
+model BlogTag {
+  id        String     @id @default(uuid())
+  name      String     @unique
+  slug      String     @unique
+  createdAt DateTime   @default(now()) @map("created_at")
+  posts     BlogPost[] @relation("BlogPostTags")
+
+  @@map("blog_tags")
+}
+
+// 9. BLOG POSTS
+model BlogPost {
+  id                String        @id @default(uuid())
+  title             String
+  slug              String        @unique
+  content           String
+  excerpt           String?
+  featuredImageUrl  String?       @map("featured_image_url")
+  authorId          String        @map("author_id")
+  categoryId        String?       @map("category_id")
+  seoTitle          String?       @map("seo_title")
+  seoDescription    String?       @map("seo_description")
+  isPublished       Boolean       @default(false) @map("is_published")
+  publishedAt       DateTime?     @map("published_at")
+  createdAt         DateTime      @default(now()) @map("created_at")
+  updatedAt         DateTime      @default(now()) @updatedAt @map("updated_at")
+  deletedAt         DateTime?     @map("deleted_at")
+
+  author            AdminUser     @relation(fields: [authorId], references: [id])
+  category          BlogCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  tags              BlogTag[]     @relation("BlogPostTags")
+  treatmentCategory TreatmentCategory? @relation(fields: [slug], references: [slug], onDelete: NoAction)
+
+  @@map("blog_posts")
+}
+
+// 10. ADMIN USERS
+model AdminUser {
+  id           String     @id @default(uuid())
+  username     String     @unique
+  email        String     @unique
+  passwordHash String     @map("password_hash")
+  role         String     @default("FRONT_DESK")
+  permissions  String     @default("") // SQLite does not support String[]
+  isActive     Boolean    @default(true) @map("is_active")
+  lastLogin    DateTime?  @map("last_login")
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @default(now()) @updatedAt @map("updated_at")
+  deletedAt    DateTime?  @map("deleted_at")
+
+  blogPosts    BlogPost[]
+
+  @@map("admin_users")
+}
+
+// 11. NEWSLETTER SUBSCRIBERS
+model NewsletterSubscriber {
+  id             String             @id @default(uuid())
+  email          String             @unique
+  status         String             @default("ACTIVE")
+  ipAddress      String?            @map("ip_address")
+  subscribedAt   DateTime           @default(now()) @map("subscribed_at")
+  unsubscribedAt DateTime?          @map("unsubscribed_at")
+
+  @@map("newsletter_subscribers")
+}
+
+// 12. CHATBOT LOGGER
+model ChatbotSession {
+  id              String           @id @default(uuid())
+  userFingerprint String?          @map("user_fingerprint")
+  userEmail       String?          @map("user_email")
+  userPhone       String?          @map("user_phone")
+  createdAt       DateTime         @default(now()) @map("created_at")
+  messages        ChatbotMessage[]
+
+  @@map("chatbot_sessions")
+}
+
+model ChatbotMessage {
+  id          String         @id @default(uuid())
+  sessionId   String         @map("session_id")
+  sender      String
+  messageText String         @map("message_text")
+  createdAt   DateTime       @default(now()) @map("created_at")
+  session     ChatbotSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@map("chatbot_messages")
+}
+
+// 13. WEB PERFORMANCE & ANALYTICS EVENTS
+model AnalyticsEvent {
+  id            Int      @id @default(autoincrement())
+  sessionToken  String   @map("session_token")
+  eventType     String   @map("event_type")
+  elementId     String?  @map("element_id")
+  pageUrl       String   @map("page_url")
+  referrerUrl   String?  @map("referrer_url")
+  ipAddress     String?  @map("ip_address")
+  userAgent     String?  @map("user_agent")
+  trafficMedium String?  @map("traffic_medium")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  @@map("analytics_events")
+}
