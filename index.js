@@ -418,7 +418,7 @@ function submitBooking(event) {
 
     // Set this to your production backend domain (e.g. 'https://lakewood-backend.onrender.com') when deploying.
     // For local development, use 'http://127.0.0.1:8001'
-    const BACKEND_URL = 'https://lakewood-backend.onrender.com';
+    const BACKEND_URL = 'https://lakewood-dental.onrender.com';
 
     // Call live FastAPI server
     fetch(`${BACKEND_URL}/api/appointments`, {
