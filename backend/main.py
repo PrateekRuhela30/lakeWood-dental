@@ -20,6 +20,12 @@ from models import Base, TreatmentCategory, Doctor, Appointment, ContactLead, Ne
 
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql+asyncpg://postgres:secure_pass_2026@localhost:5433/lakewood_dental")
 
+# Render provides 'postgres://' by default, but SQLAlchemy async requires 'postgresql+asyncpg://'
+if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+asyncpg://", 1)
+elif DATABASE_URL and DATABASE_URL.startswith("postgresql://") and not DATABASE_URL.startswith("postgresql+asyncpg://"):
+    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
+
 # Create Async Engine for low-latency asynchronous connections
 engine = create_async_engine(DATABASE_URL, echo=False, pool_pre_ping=True, pool_size=20, max_overflow=10)
 async_session = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
